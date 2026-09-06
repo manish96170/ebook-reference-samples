@@ -1,15 +1,22 @@
 # Ebook reference samples
 
-Private evidence archive for a book about building **`custom-biome-lint`** — a
+Public evidence archive for a book about building **`custom-biome-lint`** — a
 Rust linter for JavaScript, built with AI assistance and published to npm across
 8 platform targets.
 
-**What this repo is for:** whoever drafts a chapter reads the relevant file here
-to check a fact, quote a real artifact, or see what to draw out of a source. It
-is drafting scaffolding, not reader-facing material.
+**Why this exists.** The book's central claim is that AI wrote effectively all of
+the code while a human made every decision. That claim is only worth reading if
+it can be checked. This repo is where the checking happens: the dated PR record,
+verbatim review findings, the git trailers that name which model co-wrote which
+commit, and the prompts that actually caught bugs.
 
-**What this repo is not:** the book, the book's plan, the product, or the public
-companion repo. Those live elsewhere — see "Related, not in this repo" below.
+**Everything here is independently verifiable.** Every fact traces to the public
+repository [`anchor-os/custom-biome-lint`](https://github.com/anchor-os/custom-biome-lint)
+or to its public pull requests. Nothing rests on the author's word. Where a claim
+*can't* be verified, it is labelled as such — see "Conventions" below.
+
+**What this repo is not:** the book, the book's plan, the product itself, or the
+book's eventual code companion. Those live elsewhere — see "Related" below.
 
 ---
 
@@ -73,16 +80,25 @@ author's own separate public project).
    the scrub script (kept in the author's working folder, deliberately outside
    this repo, because it maps placeholders back to real strings) on anything new.
 
-### Why this repo is private
+### A note on the editorial annotations
 
-Not for privacy — nothing in here is private any more. Two other reasons:
+This archive is published **with** its working notes intact — which stories are
+strongest, which numbers not to trust, which incidents a chapter should dramatize
+at full length. Those were written as instructions to whoever drafts the book, not
+as reader-facing prose.
 
-- It contains **editorial annotations** — which stories are strongest, which
-  numbers not to trust, which failure-catalogue rows a chapter should dramatize.
-  That is the book's angle, and it stays the author's until the book ships.
-- It is a working archive, not a curated asset.
+They are left in deliberately. A book that argues "verify everything, trust
+nothing on confidence alone" is in a poor position to hide its own working. If
+you want to see how the argument was assembled — including the places where a
+tempting claim was cut for lack of evidence — it is all here.
 
-Flip it public after launch if that's useful then; it's one flag.
+Two consequences worth stating plainly:
+
+- **The annotations are opinions, not findings.** "The best story in the record"
+  is an editorial judgement. The *evidence* it points at is the verifiable part.
+- **Nothing here is final.** Counts, framings, and conclusions may all differ in
+  the finished book, because re-verification is a required step before print and
+  some of these numbers will move.
 
 ## Conventions used throughout
 
