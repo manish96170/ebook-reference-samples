@@ -72,9 +72,12 @@ author's own separate public project).
 
 ### Two things sanitization does not solve
 
-1. **The public repo still holds the originals.** The real ticket ID is in PR #8's
-   title and the real JSX prop name is in PR #27's body, on GitHub right now.
-   Scrubbing this archive changed nothing upstream.
+1. **The product repo keeps its own originals, by decision.** A ticket ID appears
+   in PR #8's title and an internal prop name in PR #27's body over in
+   `anchor-os/custom-biome-lint`. Those stay there — rewriting merged PR metadata
+   costs more than it buys, and the strings are unremarkable in isolation. They
+   are deliberately absent **here**, and this archive's full git history has been
+   scanned to confirm it: zero originals, in any blob, in any commit.
 2. **Anything freshly pulled arrives unsanitized.** A new `gh api` call returns
    the real strings; a fresh transcript paste brings back internal paths. Re-run
    the scrub script (kept in the author's working folder, deliberately outside
