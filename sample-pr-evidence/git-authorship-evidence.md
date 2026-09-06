@@ -23,7 +23,7 @@ Commits on origin/main                           63
 Commits also naming the human author as co-author  27
 
 PR bodies (of 37) with a generator/attribution trailer  20
-  "🤖 Generated with [Claude](https://claude.com/claude-code)"  15
+  "🤖 Generated with [Claude](https://claude.com/claude-code)"  13
   OpenCode attribution                                     3
   Co-Authored-By trailer only                              4
 
