@@ -1,0 +1,58 @@
+# SOURCE: custom-biome-lint/Cargo.toml  @ v0.4.5, 2026-09-07
+# CHAPTER: 2 (Why Rust, and why not write a parser)
+#
+# WHY THIS EXCERPT: the dependency block IS the chapter. Four crates, one git
+# revision, and a comment that explains a decision most readers would otherwise
+# assume was laziness. Three things to draw out:
+#
+# 1. WHY GIT AND NOT crates.io. The standalone biome_* crates on crates.io are
+#    frozen at 0.5.7 (pre-1.0) and cannot parse `$`-prefixed identifiers -- which
+#    matters here for exactly one concrete reason: the Cypress `$el` convention
+#    appears in the codebase this linter was built to check. A general "the
+#    crates are old" complaint would be forgettable; "it cannot parse a naming
+#    convention my own test suite uses" is a decision with a receipt.
+#
+# 2. WHY ALL FOUR AT THE SAME REV. Modern Biome ships only from the monorepo, so
+#    all four crates must be pinned to ONE commit to keep the dependency graph
+#    unified. Mixing revisions across crates that share types is how you get an
+#    unresolvable version conflict deep in the build.
+#
+# 3. THE `version = "0.5.7"` ALONGSIDE THE GIT REV. This looks redundant and
+#    isn't -- it is what the pinned commit's own manifests declare. Worth one
+#    sentence, because a reader copying this pattern will hit it.
+#
+# THE FOLLOW-ON STORY (Ch. 2's ending): a git pin is a liability you have to
+# service, so there is a monthly CI job whose only job is to answer "can we
+# un-pin yet?" -- see .github/workflows/biome-upgrade-check.yml. TWO CAVEATS to
+# verify before printing that as a success story:
+#   - GPT/Sol's audit suggests that workflow may have been written for an older
+#     manifest shape and may not correctly evaluate git-pinned dependencies.
+#     A monthly job that silently cannot do its job is BETTER material than one
+#     that works. Check which it is (Repo Issue #2).
+#   - the job was, at one point, blocked entirely by a crates.io 403 until a
+#     custom User-Agent header was added (Failure Catalogue row 42).
+#
+# The rev below was bumped to current Biome main in PR #34 (2026-08-18), so the
+# pin was serviced at least once inside the 14-day window. Re-read Cargo.toml at
+# the frozen edition SHA before quoting the hash.
+
+# Biome is consumed from git: the standalone `biome_js_parser`/`biome_js_syntax`
+# crates on crates.io are frozen at 0.5.7 (pre-1.0), which cannot parse `$`-prefixed
+# identifiers (e.g. the Cypress `$el` convention). Modern Biome (1.x/2.x) is only
+# [...] published via the monorepo, so all four crates —
+# biome_js_parser, biome_js_syntax, biome_rowan, and biome_languages — are pinned
+# to one commit to keep the graph unified. All four are used directly.
+[dependencies]
+biome_js_parser = { git = "https://github.com/biomejs/biome", rev = "208146010946ce47fb9396b9a2d6c9b9226e2d25", version = "0.5.7" }
+biome_js_syntax = { git = "https://github.com/biomejs/biome", rev = "208146010946ce47fb9396b9a2d6c9b9226e2d25", version = "0.5.7" }
+biome_rowan     = { git = "https://github.com/biomejs/biome", rev = "208146010946ce47fb9396b9a2d6c9b9226e2d25", version = "0.5.7" }
+biome_languages = { git = "https://github.com/biomejs/biome", rev = "208146010946ce47fb9396b9a2d6c9b9226e2d25", version = "0.1.0" }
+serde_json = "1"
+rayon = "1.7"
+
+# NOTE: the comment above is lightly elided ([...]) where the real file wraps.
+# Quote the real file, not this reconstruction, when reproducing it in print.
+# Dependency list is the complete [dependencies] block as of v0.4.5 -- note how
+# short it is. Two non-Biome dependencies for the whole tool. That is worth a
+# sentence in Ch. 2 as well: the supply-chain surface stayed small on purpose,
+# which is what made `cargo deny` and `cargo audit` cheap to keep green.
