@@ -50,7 +50,7 @@ The tempting version is *"AI wrote every line."* The better version is the
 precise one:
 
 > Authorship here is not just claimed — it is recorded, commit by commit, in a
-> public repository, with the model named. 45 of 63 commits say which model
+> public repository, with the model named. 37 of 63 commits say which model
 > co-wrote them. The remaining 18 do not, and this book does not pretend
 > otherwise.
 
