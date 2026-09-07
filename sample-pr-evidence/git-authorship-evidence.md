@@ -14,11 +14,12 @@ It is now partly corroborated, in public, by any reader with `git log`.
 
 ```
 Commits on origin/main                           63
-  carrying an AI Co-Authored-By trailer          45   (71%)
+  carrying an AI Co-Authored-By trailer          37   (59%)
     Claude Sonnet 5                              35
     Claude Opus 5 (1M context)                    7
     Claude Haiku 4.5                              3
-  no AI trailer                                  18   (29%)
+  no trailer: merge commits                     9
+  no trailer: squash-merges (PR body keeps it)  17
 
 Commits also naming the human author as co-author  27
 
@@ -29,6 +30,11 @@ PR bodies (of 37) with a generator/attribution trailer  20
 
 PR titles carrying a visible 🤖 marker            3   (#35, #36, #37)
 ```
+
+> **45 is the TRAILER-LINE count, not a commit count.** Eight commits carry two
+> model trailers, so the per-model figures below sum to 45 while only 37 commits
+> are involved. Quote **37 of 63**. Count per commit, not per line — the naive
+> `grep -c` over `git log` counts lines and gives 45.
 
 ### Reproduce it
 
@@ -64,8 +70,8 @@ checkable. Three rules:
 2. **The 18 untrailered commits are part of the story, not an embarrassment.**
    Some are merge commits, some predate the convention taking hold. Establish
    which before print (`git log --merges` will separate the merges out), and
-   report the breakdown rather than quoting only 45.
-3. **Give the ratio, never the absolute.** "71% of commits name an AI
+   report the breakdown rather than quoting only 37.
+3. **Give the ratio, never the absolute.** "59% of commits name an AI
    co-author" survives scrutiny. "AI wrote it all" does not.
 
 ---
