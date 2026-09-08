@@ -107,7 +107,7 @@ length: **review count tracks conceptual difficulty, not diff size**
 | 36 | 19 | 5 | 1 | 1 | 14 | 1 | 0 | 0 |
 | 37 | 138 | 34 | 18 | 2 | 13 | 2 | 0 | 0 |
 
-**Totals:** 19,915 insertions · 3,592 deletions · net 16,323 lines · 472 file-changes ·
+**Totals:** 19,915 insertions · 3,592 deletions · net 16,323 lines · 398 file-changes ·
 99 CodeRabbit reviews · 29 human-attributed reviews · 14 PRs with CHANGES_REQUESTED ·
 median 39.6 min open · **PR #7 = zero reviews, 4.4 min open.**
 
